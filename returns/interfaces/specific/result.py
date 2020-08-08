@@ -8,7 +8,7 @@ For impure result see
 from abc import abstractmethod
 from typing import TYPE_CHECKING, Callable, NoReturn, Type, TypeVar
 
-from returns.interfaces import altable, iterable, rescuable, unwrappable
+from returns.interfaces import altable, iterable, rescuable, unwrappable, equality
 from returns.interfaces.aliases import container
 from returns.primitives.hkt import KindN
 
@@ -81,6 +81,7 @@ ResultLike3 = ResultLikeN[_FirstType, _SecondType, _ThirdType]
 class UnwrappableResult(
     ResultLikeN[_FirstType, _SecondType, _ThirdType],
     unwrappable.Unwrappable[_FirstUnwrappableType, _SecondUnwrappableType],
+    equality.SupportsEquality,
 ):
     """
     Intermediate type with 5 type arguments that represents unwrappable result.
